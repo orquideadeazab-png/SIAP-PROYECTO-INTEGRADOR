@@ -14,12 +14,27 @@ import os
 import sys
 
 # Permite que Python encuentre la carpeta src en Streamlit Cloud
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-import streamlit as st
+import os
+import sys
+
+# Sube dos niveles en las carpetas para encontrar la raíz del proyecto
+PROYECTO_ROOT = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), "..", "..")
+)
+if PROYECTO_ROOT not in sys.path:
+    sys.path.insert(0, PROYECTO_ROOT)
+
 import pandas as pd
 import plotly.express as px
+import streamlit as st
 
 from src.recomendador import (
+    PREGUNTAS_VAK,
+    RITMOS_APRENDIZAJE,
+    NECESIDADES_ESPECIFICAS,
+    calcular_estilo_dominante,
+    generar_plan_atencion,
+)
     PREGUNTAS_VAK,
     RITMOS_APRENDIZAJE,
     NECESIDADES_ESPECIFICAS,
