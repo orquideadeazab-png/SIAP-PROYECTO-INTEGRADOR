@@ -10,7 +10,11 @@ a la diversidad exportable.
 Ejecutar con:
     streamlit run app.py
 """
+import os
+import sys
 
+# Permite que Python encuentre la carpeta src en Streamlit Cloud
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 import streamlit as st
 import pandas as pd
 import plotly.express as px
